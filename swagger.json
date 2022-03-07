@@ -1,0 +1,1497 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "BloxOne Endpoint is a lightweight roaming agent that redirects DNS traffic from your remote devices to the BloxOne Cloud. It allows you to apply applicable security policies to your roaming end users in remote sites and branch offices.\n\nIn order for end users to connect to Infoblox cloud services, you must download and install BloxOne Endpoint on their devices. The client enforces security policies that you apply to the remote networks, regardless of where your end users are and which networks they are connected to. BloxOne Endpoint listens on port 53 of the device. If other software listens on the same port, DNS traffic cannot be redirected to BloxOne Cloud, and your device will not be protected by BloxOne Endpoint.\n\nWhen you use the BloxOne Endpoint, DNS queries are sent to BloxOne Cloud directly except for (1) queries that target the bypassed domains and (2) internal domains collected through the DHCP server. If you have internal domains that are served by your local DNS servers and you want to reach them without interruptions, you should consider adding them to the bypassed internal domains list so that DNS queries for these internal domains are sent to the local DNS servers instead of BloxOne Cloud.\n\nBloxOne Endpoint supports dual-stack IPv4 and IPv6 DNS configurations, thereby protecting all devices regardless of their network environments. BloxOne Endpoint in a dual-stack environment is able to proxy IPv6 DNS queries and forward them to BloxOne Cloud over IPv4.\n",
+    "title": "BloxOne EndPoint API",
+    "version": "v1"
+  },
+  "basePath": "/api/atcep/v1/",
+  "paths": {
+    "/mdm_configs": {
+      "get": {
+        "description": "Use this method to downlaod the list of Android/iOS MDM configurations for your account.",
+        "tags": [
+          "mdm_configs"
+        ],
+        "summary": "Downlaod MDM Configs.",
+        "operationId": "mdm_configsMdmConfigs",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.\n\nLiteral values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:\n\n|  Op   |  Description               | \n|  --   |  -----------               | \n|  ==   |  Equal                     | \n|  !=   |  Not Equal                 | \n|  \u003e    |  Greater Than              | \n|   \u003e=  |  Greater Than or Equal To  | \n|  \u003c    |  Less Than                 | \n|  \u003c=   |  Less Than or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |  Matches Regex             | \n|  !~   |  Does Not Match Regex      | \n|  or   |  Logical OR                | \n|  not  |  Logical NOT               | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t",
+            "name": "_filter",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepMdmConfigResponse"
+            }
+          }
+        }
+      }
+    },
+    "/rc_download_urls": {
+      "get": {
+        "description": "Use this method to retrieve information on all Bundle objects for the account.\n\nThe BloxOne Endpoint Bundle includes BloxOne Endpoint package download URLs.",
+        "tags": [
+          "bundle"
+        ],
+        "summary": "List Bundles.",
+        "operationId": "bundleListBundles",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.\n\nLiteral values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:\n\n|  Op   |  Description               | \n|  --   |  -----------               | \n|  ==   |  Equal                     | \n|  !=   |  Not Equal                 | \n|  \u003e    |  Greater Than              | \n|   \u003e=  |  Greater Than or Equal To  | \n|  \u003c    |  Less Than                 | \n|  \u003c=   |  Less Than or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |  Matches Regex             | \n|  !~   |  Does Not Match Regex      | \n|  or   |  Logical OR                | \n|  not  |  Logical NOT               | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t",
+            "name": "_filter",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepBundleResponse"
+            }
+          }
+        }
+      }
+    },
+    "/roaming_device/status": {
+      "get": {
+        "tags": [
+          "roaming_device"
+        ],
+        "summary": "Read roaming device status counts for account, optionally filtered by roaming device group.\nUse this method to retrieve information on the specified Roaming Device object to find the count \nof roaming devices in different states",
+        "operationId": "roaming_deviceReadRoamingDeviceStatusCounts",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.\n\nLiteral values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:\n\n|  Op   |  Description               | \n|  --   |  -----------               | \n|  ==   |  Equal                     | \n|  !=   |  Not Equal                 | \n|  \u003e    |  Greater Than              | \n|   \u003e=  |  Greater Than or Equal To  | \n|  \u003c    |  Less Than                 | \n|  \u003c=   |  Less Than or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |  Matches Regex             | \n|  !~   |  Does Not Match Regex      | \n|  or   |  Logical OR                | \n|  not  |  Logical NOT               | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t",
+            "name": "_filter",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.\n\nSpecify this parameter as a comma-separated list of JSON tag names.\n\n\t\t\t\t\t\t",
+            "name": "_fields",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceStatusCountsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/roaming_device_groups": {
+      "get": {
+        "description": "Use this method to retrieve information on all Roaming Device Group objects for the account.\n\nNote that endpoint devices are not displayed for this operation.\n\nThe Roaming Device Group object represents a BloxOne Endpoint group. When applying security policies to multiple BloxOne Endpoint devices, you can make the process more efficient by organizing the endpoint devices into BloxOne Endpoint groups, and then add the groups to the network scope when you create a security policy.\n",
+        "tags": [
+          "roaming_device_groups"
+        ],
+        "summary": "List Roaming Device Groups.",
+        "operationId": "roaming_device_groupsListRoamingDeviceGroups",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.\n\nLiteral values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.\n\nYou can filter by following fields:\n\n| Name                    | type   | Supported Op  |\n| ----------------------- | ------ | ------------- |\n| policy_id               | int32  | !=, ==        |\n| default_security_policy | bool   | !=, ==        |\n\nIn addition groupping operators are supported:\n\n| Op  | Description          |\n| --- | -------------------- |\n| and | Logical AND          |\n| or  | Logical OR           |\n| not | Logical NOT          |\n| ()  | Groupping Operators  |\n\nExample:\n```\n?_filter=\"((policy_id==53123)or(policy_id==null))and(default_security_policy!='true')\"\n```\n",
+            "name": "_filter",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.\n\nSpecify this parameter as a comma-separated list of JSON tag names.\n\n\t\t\t\t\t\t",
+            "name": "_fields",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceGroupsMultiResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Use this method to create a Roaming Device Group object.\n\nThe Roaming Device Group object represents a BloxOne Endpoint group. When applying security policies to multiple BloxOne Endpoint devices, you can make the process more efficient by organizing the endpoint devices into BloxOne Endpoint groups, and then add the groups to the network scope when you create a security policy.\n\nRequired:\n- name\n",
+        "tags": [
+          "roaming_device_groups"
+        ],
+        "summary": "Create Roaming Device Group.",
+        "operationId": "roaming_device_groupsCreateRoamingDeviceGroup",
+        "parameters": [
+          {
+            "description": "The Roaming Device Group object.",
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceGroup"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "POST operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceGroupCreateResponse"
+            }
+          },
+          "400": {
+            "description": "\n- 'name' length cannot exceed 256 characters limit\n- 'description' length cannot exceed 256 characters limit\n- roaming device client identifier must belong to existing roaming device",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INVALID_ARGUMENT"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "'name' must not be empty"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "\n- 'name' value must be unique among named lists belonging to the same account\n- default roaming device group can be created only once",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "ALREADY_EXISTS"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Cannot use duplicate name \"roaming_device_group_a\""
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "\n- Internal server error occurred",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INTERNAL"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Use this method to delete the Roaming Device Group objects. Deletion of multiple lists is an all-or-nothing operation (if any of the specified lists can not be deleted then none of the specified lists will be deleted).\n\nThe Roaming Device Group object represents a BloxOne Endpoint group. When applying security policies to multiple BloxOne Endpoint devices, you can make the process more efficient by organizing the endpoint devices into BloxOne Endpoint groups, and then add the groups to the network scope when you create a security policy.\n\nRequired:\n- ids\n",
+        "tags": [
+          "roaming_device_groups"
+        ],
+        "summary": "Delete Roaming Device Groups.",
+        "operationId": "roaming_device_groupsDeleteRoamingDeviceGroup",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceGroupDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "\n- 'ids' value must be non-empty\n- 'ids' value must contain unique elements\n- 'ids' value must contain values that are greater than or equal to zero\n- roaming device group assigned to a security policy cannot be deleted",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INVALID_ARGUMENT"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "'ids' must not be empty"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "\n- 'ids' value must contain existing roaming device group identifiers",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "NOT_FOUND"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Roaming Device Group does not exist"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "\n- Internal server error occurred",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INTERNAL"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roaming_device_groups/{id}": {
+      "get": {
+        "description": "Use this method to retrieve information on the specified Roaming Device object.\n\nThe Roaming Device Group object represents a BloxOne Endpoint group. When applying security policies to multiple BloxOne Endpoint devices, you can make the process more efficient by organizing the endpoint devices into BloxOne Endpoint groups, and then add the groups to the network scope when you create a security policy.\n",
+        "tags": [
+          "roaming_device_groups"
+        ],
+        "summary": "Read Roaming Device Group.",
+        "operationId": "roaming_device_groupsReadRoamingDeviceGroup",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "The Roaming Device Group object identifier.",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.\n\nSpecify this parameter as a comma-separated list of JSON tag names.\n\n\t\t\t\t\t\t",
+            "name": "_fields",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceGroupReadResponse"
+            }
+          },
+          "404": {
+            "description": "\n- 'id' value must contain existing roaming device group identifier",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "NOT_FOUND"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Roaming Device Group does not exist"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "\n- Internal server error occurred",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INTERNAL"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Use this method to update a specific Roaming Device Group object.\n\nThe Roaming Device Group object represents a BloxOne Endpoint group. When applying security policies to multiple BloxOne Endpoint devices, you can make the process more efficient by organizing the endpoint devices into BloxOne Endpoint groups, and then add the groups to the network scope when you create a security policy.\n\nRequired:\n- name\n\n",
+        "tags": [
+          "roaming_device_groups"
+        ],
+        "summary": "Update Roaming Device Group.",
+        "operationId": "roaming_device_groupsUpdateRoamingDeviceGroup",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "The Roaming Device Group object identifier.",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "The Roaming Device Group object.",
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceGroup"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PUT operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceGroupUpdateResponse"
+            }
+          },
+          "400": {
+            "description": "\n- 'name' length cannot exceed 256 characters limit\n- 'description' length cannot exceed 256 characters limit\n- roaming device client identifier must belong to existing roaming device",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INVALID_ARGUMENT"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "'name' must not be empty"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "\n- 'id' value must contain existing roaming device group identifier"
+          },
+          "409": {
+            "description": "\n- 'name' value must be unique among named lists belonging to the same account\n- default roaming device group can be created only once",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "ALREADY_EXISTS"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Cannot use duplicate name \"roaming_device_group_a\""
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "\n- Internal server error occurred",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INTERNAL"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "description": "Use this method to partially update a specific Roaming Device Group object with specific roaming_devices only.\n\nRequired:\n- name\n",
+        "tags": [
+          "roaming_device_groups"
+        ],
+        "summary": "Update Roaming Device Group partially.",
+        "operationId": "roaming_device_groupsUpdatePartialRoamingDeviceGroup",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "The Roaming Device Group object identifier.",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "The Roaming Device Group object.",
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceGroupUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PATCH operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceGroupUpdateResponse"
+            }
+          },
+          "400": {
+            "description": "\n- 'name' length cannot exceed 256 characters limit\n- 'description' length cannot exceed 256 characters limit\n- roaming device client identifier must belong to existing roaming device",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INVALID_ARGUMENT"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "'name' must not be empty"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "\n- 'id' value must contain existing roaming device group identifier"
+          },
+          "409": {
+            "description": "\n- 'name' value must be unique among named lists belonging to the same account\n- default roaming device group can be created only once",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "ALREADY_EXISTS"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Cannot use duplicate name \"roaming_device_group_a\""
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "\n- Internal server error occurred",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INTERNAL"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roaming_devices": {
+      "get": {
+        "description": "Use this method to retrieve information on all Roaming Device objects for the account.\n\nThe Roaming Device object represents the device with BloxOne Endpoint client installed. In order for end users to connect to Infoblox cloud services, you must download and install BloxOne Endpoint on their devices. The client enforces security policies that you apply to the remote networks, regardless of where your end users are and which networks they are connected to. BloxOne Endpoint listens on port 53 of the device. If other software listens on the same port, DNS traffic cannot be redirected to BloxOne Cloud, and your device will not be protected by BloxOne Endpoint.\n",
+        "tags": [
+          "roaming_devices"
+        ],
+        "summary": "List Roaming Devices.",
+        "operationId": "roaming_devicesListRoamingDevices",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.\n\nLiteral values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'.\n\nYou can filter by following fields:\n\n| Name          | type   | Supported Op |\n| ------------- | ------ | ------------ |\n| client_id     | string | ==           |\n| group_id      | int32  | ==           |\n| default_group | bool   | ==           |\n\nGroupping operators (and, or, not, ()) are not supported.\n\n\nExample:\n```\n?_filter=\"client_id=='abc12345abc'\"\n```\n",
+            "name": "_filter",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.\n\nSpecify this parameter as a comma-separated list of JSON tag names.\n\n\t\t\t\t\t\t",
+            "name": "_fields",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "description": "\n\nThe integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0'.\n\n\t\t\t\t\t\t\t",
+            "name": "_offset",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "description": "\n\nThe integer number of resources to be returned in the response. The service may impose maximum value. If omitted the service may impose a default value.\n\n\t\t\t\t\t\t\t",
+            "name": "_limit",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "\n\nThe service-defined string used to identify a page of resources. A null value indicates the first page.\n\n\t\t\t\t\t\t\t",
+            "name": "_page_token",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be sorted by their JSON tags. For a 'flat' resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix 'asc' sorts the data in ascending order. The suffix 'desc' sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.\n\n\t\t\t\t\t\t",
+            "name": "_order_by",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceMultiResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Use this method to update the status for the Roaming Device objects. Depending on the last connection timestamp and administrative status the final status is determined using the table below:\n\n| administrative_status | connected | calculated_status |\n| --------------------- | --------- | ----------------- |\n| enabled               | true      | active            |\n| enabled               | false     | inactive          |\n| disabled              | *         | disabled          |\n| deleted               | *         | deleted           |\n\nThe Roaming Device object is treated as connected when the last login timestamp (connection timestamp) is less than 15 minutes from time of the update.\n\nThe Roaming Device object represents the device with BloxOne Endpoint client installed. In order for end users to connect to Infoblox cloud services, you must download and install BloxOne Endpoint on their devices. The client enforces security policies that you apply to the remote networks, regardless of where your end users are and which networks they are connected to. BloxOne Endpoint listens on port 53 of the device. If other software listens on the same port, DNS traffic cannot be redirected to BloxOne Cloud, and your device will not be protected by BloxOne Endpoint.",
+        "tags": [
+          "roaming_devices"
+        ],
+        "summary": "Update Roaming Device.",
+        "operationId": "roaming_devicesUpdateRoamingDevice",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PUT operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceUpdateResponse"
+            }
+          }
+        }
+      }
+    },
+    "/roaming_devices/{client_id}": {
+      "get": {
+        "description": "Use this method to retrieve information on the specified Roaming Device object.\n\nThe Roaming Device object represents the device with BloxOne Endpoint client installed. In order for end users to connect to Infoblox cloud services, you must download and install BloxOne Endpoint on their devices. The client enforces security policies that you apply to the remote networks, regardless of where your end users are and which networks they are connected to. BloxOne Endpoint listens on port 53 of the device. If other software listens on the same port, DNS traffic cannot be redirected to BloxOne Cloud, and your device will not be protected by BloxOne Endpoint.",
+        "tags": [
+          "roaming_devices"
+        ],
+        "summary": "Read Roaming Device.",
+        "operationId": "roaming_devicesReadRoamingDevice",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The unique identifier of the endpoint device.",
+            "name": "client_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be transformed by specifying a set of JSON tags to be returned. For a “flat” resource, the tag name is straightforward. If field selection is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, the tag does not appear in the output resource.\n\nSpecify this parameter as a comma-separated list of JSON tag names.\n\n\t\t\t\t\t\t",
+            "name": "_fields",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceReadResponse"
+            }
+          }
+        }
+      }
+    },
+    "/roaming_devices/{payload.client_id}": {
+      "patch": {
+        "description": "Use this method to update the roaming device partially, e.g. overwrite/reset ELB IPs a specific Roaming Device object.\n\nRequired:\n- clinet_id\n",
+        "tags": [
+          "roaming_devices"
+        ],
+        "summary": "Update partial Roaming Device",
+        "operationId": "roaming_devicesUpdatePartialRoamingDevice",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The unique identifier of the endpoint device",
+            "name": "payload.client_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "RoamingDeviceUpdate object",
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PATCH operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDeviceUpdatePartialResponse"
+            }
+          },
+          "400": {
+            "description": "\n- 'client_id' length cannot exceed 50 characters limit",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INVALID_ARGUMENT"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "'client_id' must not be empty"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "\n- 'client_id' value must contain existing roaming device identifier"
+          },
+          "500": {
+            "description": "\n- Internal server error occurred",
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": "INTERNAL"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roaming_devices_download": {
+      "get": {
+        "tags": [
+          "roaming_devices"
+        ],
+        "summary": "List RoamingDevices in CSV format\nUse this method to download the selected list of roaming devices in CSV (comma-separate values) format.",
+        "operationId": "roaming_devicesListRoamingDevicesCSV",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null.\n\nLiteral values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null'. The following operators are commonly used in filter expressions:\n\n|  Op   |  Description               | \n|  --   |  -----------               | \n|  ==   |  Equal                     | \n|  !=   |  Not Equal                 | \n|  \u003e    |  Greater Than              | \n|   \u003e=  |  Greater Than or Equal To  | \n|  \u003c    |  Less Than                 | \n|  \u003c=   |  Less Than or Equal To     | \n|  and  |  Logical AND               | \n|  ~    |  Matches Regex             | \n|  !~   |  Does Not Match Regex      | \n|  or   |  Logical OR                | \n|  not  |  Logical NOT               | \n|  ()   |  Groupping Operators       |\n\n\t\t\t\t\t\t",
+            "name": "_filter",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "\n\nA collection of response resources can be sorted by their JSON tags. For a 'flat' resource, the tag name is straightforward. If sorting is allowed on non-flat hierarchical resources, the service should implement a qualified naming scheme such as dot-qualification to reference data down the hierarchy. If a resource does not have the specified tag, its value is assumed to be null.)\n\nSpecify this parameter as a comma-separated list of JSON tag names. The sort direction can be specified by a suffix separated by whitespace before the tag name. The suffix 'asc' sorts the data in ascending order. The suffix 'desc' sorts the data in descending order. If no suffix is specified the data is sorted in ascending order.\n\n\t\t\t\t\t\t",
+            "name": "_order_by",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/atcepRoamingDevicesCSVListResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "NetInfoState": {
+      "description": "The BloxOne Endpoint client software state.",
+      "type": "object",
+      "properties": {
+        "protection": {
+          "description": "BloxOne Endpoint protection state.",
+          "type": "string",
+          "enum": [
+            "UNKNOWN_SUB_STATUS",
+            "MISSING_CUSTOMER_ID",
+            "PENDING_REGISTRATION",
+            "INVALID_CUSTOMER_ID",
+            "FAILED_REGISTRATION",
+            "ACCOUNT_ERROR",
+            "CAPTIVE_PORTAL",
+            "PORTAL_ERROR",
+            "PERMANENT_DEACTIVATION",
+            "TEMP_DEACTIVATION",
+            "DNS_PROVIDING_SOFTWARE",
+            "DNS_TESTING",
+            "DNS_ERROR",
+            "NO_ACTIVE_CARD",
+            "PROXY_ERROR",
+            "PENDING_ACCOUNT_CHECK",
+            "NO_DNS_SERVER",
+            "PORTAL_FQDN_NOT_RESOLVED",
+            "ON_PREMISE_TESTING",
+            "ON_PREMISE_SUCCESS",
+            "DETECTED_INTERCEPTION",
+            "DETECTED_F5_VPN",
+            "NOT_FOUND",
+            "CLOUD"
+          ]
+        },
+        "upgrade": {
+          "description": "BloxOne Endpoint client software upgrade state.",
+          "type": "string",
+          "enum": [
+            "NO_OPERATION",
+            "NEW_VERSION_AVAILABLE",
+            "INITIATE_DOWNLOAD",
+            "DOWNLOADING",
+            "DELAY_RESTART",
+            "UPGRADE_PENDING",
+            "UPGRADING"
+          ]
+        }
+      }
+    },
+    "atcepBundle": {
+      "description": "The BloxOne Endpoint Bundle object.\n\nThe BloxOne Endpoint Bundle includes BloxOne Endpoint package download URLs.",
+      "type": "object",
+      "properties": {
+        "bundle_url": {
+          "description": "The download URL of the endpoint logs.",
+          "type": "string",
+          "example": "https://bundle-url.domain.com/download/mac/BloxOneEndpoint-1.8.0.zip"
+        },
+        "checksum_url": {
+          "description": "The URL of the bundle checksum.",
+          "type": "string",
+          "example": "https://bundle-url.domain.com/download/mac/BloxOneEndpoint-1.8.0.zip.ab319791df254aefda507f5c230b6f34.md5"
+        },
+        "platform": {
+          "description": "The operating system on which endpoint is installed.",
+          "type": "string",
+          "example": "mac"
+        }
+      }
+    },
+    "atcepBundleResponse": {
+      "description": "The Bundle list response.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The list of Bundle objects.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/atcepBundle"
+          }
+        }
+      }
+    },
+    "atcepKVpair": {
+      "description": "key value pair contains all the MDM configs",
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "atcepMdmConfigResponse": {
+      "description": "The MDM config proto response.This will be override by XML response in atcep.override.go",
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/atcepKVpair"
+          }
+        },
+        "mdm_type": {
+          "description": "this field is used to differentiate xml response for different MDMs. Used only internally.",
+          "type": "string"
+        }
+      }
+    },
+    "atcepNetInfo": {
+      "description": "The Networking Information object.\n\nThe networking information related to a specific BloxOne Endpoint device.",
+      "type": "object",
+      "properties": {
+        "fqdn": {
+          "description": "The FQDN of the endpoint device.",
+          "type": "string",
+          "readOnly": true,
+          "example": "example1.corp-device.com"
+        },
+        "ipv4_addr_list": {
+          "description": "The list of IPv4 addresses of the endpoint device.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "example": [
+            "10.5.77.12",
+            "11.2.5.39"
+          ]
+        },
+        "mac_addr": {
+          "description": "The list of MAC addresses of the endpoint device.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "example": [
+            "00:a0:c9:14:c8:29",
+            "12:cb:c0:31:ff:ee"
+          ]
+        },
+        "state": {
+          "description": "The state of the BloxOne Endpoint client software of the endpoint device. That can be either \"protection\" or \"upgrade\".",
+          "$ref": "#/definitions/NetInfoState",
+          "readOnly": true
+        }
+      }
+    },
+    "atcepRoamingDevice": {
+      "description": "The Roaming Device object.\n\nThe Roaming Device object represents the device with BloxOne Endpoint client installed. In order for end users to connect to Infoblox cloud services, you must download and install BloxOne Endpoint on their devices. The client enforces security policies that you apply to the remote networks, regardless of where your end users are and which networks they are connected to. BloxOne Endpoint listens on port 53 of the device. If other software listens on the same port, DNS traffic cannot be redirected to BloxOne Cloud, and your device will not be protected by BloxOne Endpoint.",
+      "type": "object",
+      "properties": {
+        "calculated_status": {
+          "description": "The operational state of the endpoint device that can be \"ACTIVE\", \"INACTIVE\", \"DISABLED\" or \"DELETED\".",
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "INACTIVE",
+            "DISABLED",
+            "DELETED"
+          ],
+          "readOnly": true,
+          "example": "ACTIVE"
+        },
+        "client_id": {
+          "description": "The unique identifier of the endpoint device.",
+          "type": "string",
+          "readOnly": true,
+          "example": "b1a011e8328f75e7233db3c2a6d9c217"
+        },
+        "connected_time": {
+          "description": "The time when the Roaming Device object was last updated from login call.",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "created_time": {
+          "description": "The time when the Roaming Device object was created.",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "device_info": {
+          "description": "The information about the endpoint device.",
+          "type": "string",
+          "readOnly": true,
+          "example": "S-1-5-21-804185182-4086767973-266869295"
+        },
+        "elb_ip_list": {
+          "description": "The ELB IP for the roaming device. This will be used to overwrite ELB IPs for the roaming device.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "group_id": {
+          "description": "The identifier of the endpoint group with which the device is associated.",
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "example": 53212
+        },
+        "group_name": {
+          "description": "The name of the endpoint group with which the device is associated.",
+          "type": "string",
+          "readOnly": true,
+          "example": "endpoint_group_a"
+        },
+        "name": {
+          "description": "The name of the endpoint device.",
+          "type": "string",
+          "readOnly": true,
+          "example": "endpoint_device_a"
+        },
+        "net_info": {
+          "description": "The networking information related to the endpoint device.",
+          "$ref": "#/definitions/atcepNetInfo",
+          "readOnly": true
+        },
+        "os_platform": {
+          "description": "The operating system of the endpoint device.",
+          "type": "string",
+          "readOnly": true,
+          "example": "Windows 7 Enterprise"
+        },
+        "updated_time": {
+          "description": "The time when the Roaming Device object was last updated.",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "user_id": {
+          "description": "The user identifier of the endpoint device.",
+          "type": "string",
+          "readOnly": true,
+          "example": "user_a"
+        },
+        "version": {
+          "description": "The version of the BloxOne Endpoint client installed on the endpoint device.",
+          "type": "string",
+          "readOnly": true,
+          "example": "1.5.2"
+        }
+      }
+    },
+    "atcepRoamingDeviceGroup": {
+      "description": "The Roaming Device Group object.\n\nThe Roaming Device Group object represents a BloxOne Endpoint group. When applying security policies to multiple BloxOne Endpoint devices, you can make the process more efficient by organizing the endpoint devices into BloxOne Endpoint groups, and then add the groups to the network scope when you create a security policy.",
+      "type": "object",
+      "properties": {
+        "created_time": {
+          "description": "The time when this Roaming Device Group object was created.",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "description": {
+          "description": "The brief description for the endpoint group.",
+          "type": "string",
+          "example": "Endpoint Group A Description"
+        },
+        "elb_ip_list": {
+          "description": "ELB IP list for this group of endpoints",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "description": "The Roaming Device Group object identifier.",
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true
+        },
+        "internal_domain_lists": {
+          "description": "The list of identifiers of internal_domain_lists ids that are associated with this endpoint group",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "is_default": {
+          "description": "Flag that indicates whether this is a default endpoint group.",
+          "type": "boolean",
+          "format": "boolean",
+          "example": false
+        },
+        "is_probe_enabled": {
+          "description": "Whether probe domain-response is enabled",
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "name": {
+          "description": "The name of the endpoint group.",
+          "type": "string",
+          "example": "endpoint_group_a"
+        },
+        "policy_id": {
+          "description": "The identifier of the security policy with which the endpoint group is associated.",
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "example": 234513
+        },
+        "policy_name": {
+          "description": "The name of the security policy with which the endpoint group is associated. Default is \"Default Global Policy\".",
+          "type": "string",
+          "example": "security_policy_a"
+        },
+        "probe_domain": {
+          "description": "User specified domain for FQDN,\nexcluding this field inherits from default group's probe domain (when creating) or ignores field (when updating)",
+          "type": "string"
+        },
+        "probe_response": {
+          "description": "The probe token for generating custom TXT record,\nexcluding this field inherits from default group's probe response (when creating) or ignores field (when updating)",
+          "type": "string"
+        },
+        "roaming_device_count": {
+          "description": "Count of roaming devices in this group; absence of this field is equivalent to a count of zero. Note: only GET operation on roaming device group collection resource populates this field.",
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true
+        },
+        "roaming_devices": {
+          "description": "The list of endpoint devices' client identifiers that are associated to the endpoint group.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "b1a011e8328f75e7233db3c2a6d9c217",
+            "0f77518dc435a682c55dfa0d16b28b97"
+          ]
+        },
+        "uninstallation_code": {
+          "description": "Uninstallation code for this group of endpoints",
+          "type": "string"
+        },
+        "updated_time": {
+          "description": "The time when this Roaming Device Group object was last updated.",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        }
+      }
+    },
+    "atcepRoamingDeviceGroupCreateResponse": {
+      "description": "The Roaming Device Group create response.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The Roaming Device Group object.",
+          "$ref": "#/definitions/atcepRoamingDeviceGroup"
+        }
+      }
+    },
+    "atcepRoamingDeviceGroupDeleteRequest": {
+      "description": "The Roaming Device Group delete request.",
+      "type": "object",
+      "properties": {
+        "ids": {
+          "description": "The list of Roaming Device Group object identifiers.",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "example": [
+            12345,
+            53215
+          ]
+        }
+      }
+    },
+    "atcepRoamingDeviceGroupReadResponse": {
+      "description": "The Roaming Device Group read response.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The Roaming Device Group object.",
+          "$ref": "#/definitions/atcepRoamingDeviceGroup"
+        }
+      }
+    },
+    "atcepRoamingDeviceGroupUpdate": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "The brief description for the endpoint group.",
+          "type": "string",
+          "example": "Endpoint Group A Description"
+        },
+        "elb_ip_list": {
+          "description": "The ELB IP list option",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "description": "The Roaming Device Group object identifier.",
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true
+        },
+        "internal_domain_lists": {
+          "description": "The list of identifiers of internal_domain_lists ids that are supposed to be associated with this endpoint group",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "is_probe_enabled": {
+          "description": "Whether probe domain-response is enabled",
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "name": {
+          "description": "The name of the endpoint group.",
+          "type": "string",
+          "example": "endpoint_group_a"
+        },
+        "probe_domain": {
+          "description": "User specified domain for FQDN,\nexcluding this field inherits from default group's probe domain (when creating) or ignores field (when updating)",
+          "type": "string"
+        },
+        "probe_response": {
+          "description": "The probe token for generating custom TXT record,\nexcluding this field inherits from default group's probe response (when creating) or ignores field (when updating)",
+          "type": "string"
+        },
+        "roaming_devices_added": {
+          "description": "The list of endpoint devices' client identifiers that will be disassociated from the group they are currently associated with and associated with this group..",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "b1a011e8328f75e7233db3c2a6d9c217",
+            "0f77518dc435a682c55dfa0d16b28b97"
+          ]
+        },
+        "roaming_devices_deleted": {
+          "description": "The list of endpoint devices' client identifiers that will be disassociated from this group and associated with the default roaming clients group for the account.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "b1a011e8328f75e7233db3c2a6d9c217",
+            "0f77518dc435a682c55dfa0d16b28b97"
+          ]
+        },
+        "uninstallation_code": {
+          "description": "The uninstallation code",
+          "type": "string"
+        }
+      }
+    },
+    "atcepRoamingDeviceGroupUpdateResponse": {
+      "description": "The Roaming Device Group update response.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The Roaming Device Group object.",
+          "$ref": "#/definitions/atcepRoamingDeviceGroup"
+        }
+      }
+    },
+    "atcepRoamingDeviceGroupsMultiResponse": {
+      "description": "The Roaming Device Group list response.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The list of Roaming Device Group objects.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/atcepRoamingDeviceGroup"
+          }
+        }
+      }
+    },
+    "atcepRoamingDeviceMultiResponse": {
+      "description": "The Roaming Device object list response.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The list of Roaming Device objects.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/atcepRoamingDevice"
+          }
+        },
+        "total_result_count": {
+          "description": "Total number of results",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "atcepRoamingDeviceReadResponse": {
+      "description": "The Roaming Device object read response.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The Roaming Device object.",
+          "$ref": "#/definitions/atcepRoamingDevice"
+        }
+      }
+    },
+    "atcepRoamingDeviceStatus": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "inactive": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total": {
+          "description": "Total status(Active, Inactive) for endpoints.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "atcepRoamingDeviceStatusCountsResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "$ref": "#/definitions/atcepRoamingDeviceStatus"
+        }
+      }
+    },
+    "atcepRoamingDeviceUpdate": {
+      "description": "The Roaming Device  partial update message",
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "description": "The unique identifier of the endpoint device",
+          "type": "string"
+        },
+        "elb_ip_list": {
+          "description": "The list ELB IPs to be used for this roaming device",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "atcepRoamingDeviceUpdatePartialResponse": {
+      "description": "The Roaming Device update partial response",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The updated roaming device",
+          "$ref": "#/definitions/atcepRoamingDevice"
+        }
+      }
+    },
+    "atcepRoamingDeviceUpdateRequest": {
+      "description": "The Roaming Device object update request.",
+      "type": "object",
+      "properties": {
+        "administrative_status": {
+          "description": "The administrative state of the BloxOne Endpoint client.",
+          "type": "string",
+          "enum": [
+            "enabled",
+            "disabled",
+            "deleted"
+          ],
+          "example": "enabled"
+        },
+        "client_ids": {
+          "description": "The list of unique identifiers of endpoint devices.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "b1a011e8328f75e7233db3c2a6d9c217",
+            "0f77518dc435a682c55dfa0d16b28b97"
+          ]
+        }
+      }
+    },
+    "atcepRoamingDeviceUpdateResponse": {
+      "description": "The Roaming Device object update response.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "The list of Roaming Device objects.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/atcepRoamingDevice"
+          }
+        }
+      }
+    },
+    "atcepRoamingDevicesCSVListResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "Roaming devices for csv file",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ]
+}
