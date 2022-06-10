@@ -12,6 +12,7 @@ import (
 
 func main() {
 	var conn *grpc.ClientConn
+	//change address below if you are running locally with docker containers(container IP)
 	conn, err := grpc.Dial(":50051", grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %s", err)
